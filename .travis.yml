@@ -14,7 +14,9 @@ before_install:
   - pip install --user cpp-coveralls
   
 script:
-  - g++ main.cpp -o hello -coverage
+  # Wraps the compilation with the Build Wrapper to generate configuration (used
+  # later by the SonarQube Scanner) into the "bw-output" folder
+  - build-wrapper-linux-x86-64 --out-dir bw-output g++ main.cpp -o hello -coverage
   - ./hello
   - sonar-scanner
   - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
