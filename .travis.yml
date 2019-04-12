@@ -1,0 +1,8 @@
+language: cpp
+
+branches:
+  only:
+  - master
+  
+script:
+  - g++ main.cpp -o hello
