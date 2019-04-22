@@ -1,4 +1,8 @@
 language: cpp
+sudo: required
+
+services:
+  - docker
 
 addons:
   sonarcloud:
@@ -20,3 +24,7 @@ script:
   - ./hello
   - sonar-scanner
   - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
+  # test docker build
+  - docker build -t cpp_cd .
+  # docker push to registy
+  
