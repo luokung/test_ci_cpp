@@ -29,3 +29,8 @@ script:
   # docker test
   - docker run cpp_cd /root/hello
   # docker push to registy
+  - docker login -u $DOCKER_NAME -p $DOCKER_PASS $DOCKER_REGI
+  # fanvanzh/test is a test path
+  - docker tag cpp_cd $DOCKER_REGI/fanvanzh/test
+  # push to ali docker resposity, cost some bandwidth
+  - docker push $DOCKER_REGI/fanvanzh/test
